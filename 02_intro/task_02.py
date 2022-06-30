@@ -6,7 +6,7 @@
 
 import math
 
-sign=int(input('Введите 0 если хотите ввести в числа в  алгебраичесой форме, если в полярной введите 1: '))
+'''sign=int(input('Введите 0 если хотите ввести в числа в  алгебраичесой форме, если в полярной введите 1: '))
 if sign==0:
     print('Формула комплексного числа a+bj ')
     a=float(input('Первое число введите а: '))
@@ -18,14 +18,13 @@ elif sign==1:
     a = float(input('Первое число введите а: '))
     b = float(input('Первое число введите в радианах b: '))
     c = float(input('Второе число введите a: '))
-    d = float(input('Второе число введите в радианах b: '))
+    d = float(input('Второе число введите в радианах b: '))'''
 #Класс получает значение и реализует преобразования как из алгебраической записи в полярную, так и обратно
+sign=0
 class ComplexNumber:
-    def __init__(self, a,b,c,d):
+    def __init__(self, a,b):
         self.a = a
         self.b = b
-        self.c = c
-        self.d = d
     def complex_number(self):
         a_first_number = complex(a,b)# первое комплексное число
         a_second_number = complex(c, d)# второе комплексное число
