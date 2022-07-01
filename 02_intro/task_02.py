@@ -46,7 +46,7 @@ class ComplexNumber:
     def __truediv__(self, other):
         return complex(self.a / other.a, self.b / other.b)
 
-if sign == 0:
+if sign == 0:# При вводе в алгебраической форме
     one_number=ComplexNumber(a,b)
     two_number = ComplexNumber(c,d)
     print()
@@ -70,7 +70,7 @@ if sign == 0:
     print(p_one_number*p_two_number)
     print(p_one_number/p_two_number)
     print()
-elif sign == 1:
+elif sign == 1:# При вводе в полярной форме
     one_number = ComplexNumber(a, b)
     two_number = ComplexNumber(c, d)
     print()
