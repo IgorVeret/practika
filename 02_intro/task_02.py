@@ -6,7 +6,7 @@
 
 import math
 
-'''sign=int(input('Введите 0 если хотите ввести в числа в  алгебраичесой форме, если в полярной введите 1: '))
+sign=int(input('Введите 0 если хотите ввести в числа в  алгебраичесой форме, если в полярной введите 1: '))
 if sign==0:
     print('Формула комплексного числа a+bj ')
     a=float(input('Первое число введите а: '))
@@ -18,75 +18,80 @@ elif sign==1:
     a = float(input('Первое число введите а: '))
     b = float(input('Первое число введите в радианах b: '))
     c = float(input('Второе число введите a: '))
-    d = float(input('Второе число введите в радианах b: '))'''
+    d = float(input('Второе число введите в радианах b: '))
 #Класс получает значение и реализует преобразования как из алгебраической записи в полярную, так и обратно
-sign=0
+
 class ComplexNumber:
-    def __init__(self, a,b):
-        self.a = a
-        self.b = b
-    def complex_number(self):
-        a_first_number = complex(a,b)# первое комплексное число
-        a_second_number = complex(c, d)# второе комплексное число
-        return a_first_number, a_second_number
-    def alg_trig(self):
-        t_first_number = complex(math.sqrt(a**2+b**2),math.degrees(math.atan(b/a)))
-        t_second_number= complex(math.sqrt(c**2+d**2),math.degrees(math.atan(d/c)))
-        # print(t_first_number,t_second_number)
-        return t_first_number,t_second_number
-    def trig_alg(self):
-        at_first_number = complex(a*math.cos(b), a*math.sin(b))
-        at_second_number= complex(c*math.cos(d), c*math.sin(d))
-        # print(at_first_number, at_second_number)
-        return at_first_number, at_second_number
+    def __init__(self, a=0, b=0):
+        self.a = a #Действительная часть
+        self.b = b # Мнимая часть
+    @staticmethod
+    def alg_polar(a, b):# Преобразование из алгебраической в полярную форму
+        a = math.sqrt(a ** 2 + b ** 2)
+        b = math.atan(b / a)
+        return a,b
 
-number = ComplexNumber(a,b,c,d)
+    @staticmethod
+    def polar_alg(a,b):# преобразование из полярной в алгебраическую форму
+        a=a*math.cos(b)
+        b = a*math.sin(b)
+        return a, b
+    #Перезагрузка операторов вычислений
+    def __add__(self, other):
+        return complex(self.a+other.a, self.b+other.b)
+    def __sub__(self, other):
+        return complex(self.a - other.a, self.b - other.b)
+    def __mul__(self, other):
+        return complex(self.a * other.a -self.b * other.b,self.a * self.b + other.b * self.a)
+    def __truediv__(self, other):
+        return complex(self.a / other.a, self.b / other.b)
 
-if sign ==0:
-    alg_1,alg_2= number.complex_number() # Получаем объекты в алгебраической форме
-    print('Полученные комплексные числа',alg_1,alg_2)
-    add=alg_1.__add__(alg_2)
-    sub=alg_1.__sub__(alg_2)
-    mul=alg_1.__mul__(alg_2)
-    truediv=alg_1.__truediv__(alg_2)
-    print('Сложение алгебраических комплексных чисел', add)
-    print('Вычитание алгебраических комплексных чисел', sub)
-    print('Умножение алгебраических комплексных чисел', mul)
-    print('Деление алгебраических комплексных чисел', truediv)
+if sign == 0:
+    one_number=ComplexNumber(a,b)
+    two_number = ComplexNumber(c,d)
     print()
-    print('---------Преобразование в полярную форму------------------------------')
+    print('---------Расчет в алгебраической форме------------------------------')
     print()
-    alg_1,alg_2= number.alg_trig()
-    print('Преобразованные  комплексные числа',alg_1,alg_2)
-    add=alg_1.__add__(alg_2)
-    sub=alg_1.__sub__(alg_2)
-    mul=alg_1.__mul__(alg_2)
-    truediv=alg_1.__truediv__(alg_2)
-    print('Сложение полярных комплексных чисел', add)
-    print('Вычитание полярных комплексных чисел', sub)
-    print('Умножение полярных комплексных чисел', mul)
-    print('Деление полярных комплексных чисел', truediv)
-elif sign==1:
-    alg_1,alg_2= number.complex_number() # Получаем объекты в полярной форме
-    print('Полученные комплексные числа',alg_1,alg_2)
-    add=alg_1.__add__(alg_2)
-    sub=alg_1.__sub__(alg_2)
-    mul=alg_1.__mul__(alg_2)
-    truediv=alg_1.__truediv__(alg_2)
-    print('Сложение полярных комплексных чисел', add)
-    print('Вычитание полярных комплексных чисел', sub)
-    print('Умножение полярных комплексных чисел', mul)
-    print('Деление полярных комплексных чисел', truediv)
+    print(one_number+two_number)
+    print(one_number-two_number)
+    print(one_number*two_number)
+    print(one_number/two_number)
     print()
-    print('---------Преобразование в алгебрраическую форму------------------------------')
+    print('---------Преобразование в полярную форму и расчет-----------------------')
     print()
-    alg_1,alg_2= number.trig_alg()
-    print('Преобразованные комплексные числа',alg_1,alg_2)
-    add=alg_1.__add__(alg_2)
-    sub=alg_1.__sub__(alg_2)
-    mul=alg_1.__mul__(alg_2)
-    truediv=alg_1.__truediv__(alg_2)
-    print('Сложение алгебраических комплексных чисел', add)
-    print('Вычитание алгебраических комплексных чисел', sub)
-    print('Умножение алгебраических комплексных чисел', mul)
-    print('Деление алгебраических комплексных чисел', truediv)
+    polar_a,polar_b = ComplexNumber.alg_polar(a,b)
+    polar_c,polar_d= ComplexNumber.alg_polar(c,d)
+
+    p_one_number=ComplexNumber(polar_a,polar_b)
+    p_two_number=ComplexNumber(polar_c,polar_d)
+
+    print(p_one_number+p_two_number)
+    print(p_one_number-p_two_number)
+    print(p_one_number*p_two_number)
+    print(p_one_number/p_two_number)
+    print()
+elif sign == 1:
+    one_number = ComplexNumber(a, b)
+    two_number = ComplexNumber(c, d)
+    print()
+    print('---------Расчет в полярной форме------------------------------')
+    print()
+    print(one_number + two_number)
+    print(one_number - two_number)
+    print(one_number * two_number)
+    print(one_number / two_number)
+    print()
+    print('---------Преобразование в алгебраическую форму и расчет-----------------------')
+    print()
+    polar_a, polar_b = ComplexNumber.polar_alg(a, b)
+    polar_c, polar_d = ComplexNumber.polar_alg(c, d)
+
+    p_one_number = ComplexNumber(polar_a, polar_b)
+    p_two_number = ComplexNumber(polar_c, polar_d)
+
+    print(p_one_number + p_two_number)
+    print(p_one_number - p_two_number)
+    print(p_one_number * p_two_number)
+    print(p_one_number / p_two_number)
+    print()
+
