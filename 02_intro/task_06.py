@@ -16,7 +16,41 @@
   указанные функциональности должны быть описаны в специализированных классах.
 
 В реализации математических операций запрещается пользоваться любыми функциями,
-требующими использования оператора import.
+требующими использования оператора import.'''
 
 class Matrix:
-    pass'''
+    def __init__(self, rows = None, n = None, m = None, default = 0):
+        if rows:
+            if type(rows[0]) == int:
+                self.n = 1
+                self.m = len(rows)
+                self.rows = [rows]
+            else:
+                self.m = len(rows[0])
+                for i in enumerate(rows):
+                    if len(i[1]) != self.m:
+                        raise Exception("Incorrect init params: rows have different length.")
+                    self.n = 1+i[0]
+
+                self.rows = rows
+            self.default = None
+
+        else:
+            if n and m:
+                self.n = n
+                self.m = m
+
+                self.default = default
+                row = [default]*self.m
+                self.rows = [row]*n
+
+            else:
+                raise ValueError("Incorrect init params: all init parametrs have type None.")
+
+    def __repr__(self):
+        return str(self.rows)
+# a = Matrix()
+a = Matrix([[1,2,3,4],[5,6,7,8],[1,2,3,5],[3,7,4,5]])
+b = Matrix(n = 4, m=4, default=2)
+print(b)
+print(a)

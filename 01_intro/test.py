@@ -3,6 +3,8 @@ class Point:
         self.x = x
         self.y = y
 
+    def __dict__(self,other):
+        return other
 
 
     def __add__(self, other):
@@ -10,8 +12,7 @@ class Point:
         y = self.y + other.y
         return Point(x, y)
 
-# задаем координаты точек p1, p2
+
 p1 = Point(1, 2)
 p2 = Point(2, 3)
-
-print(p1,p2)
+print()
