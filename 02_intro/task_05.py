@@ -4,14 +4,11 @@
 импортируемый атрибут должен получить имя с суффиксом "_new".
 '''
 
-import re
-
 
 def copy_class_attrs(cls):
     def decorator(decor_class):
         for item in cls.__dict__.items():  # атрибуты
             if item[0][:1] != '_':  # Проверяем условие
-
 
                 if item[0] not in decor_class.__dict__:
                     setattr(decor_class, item[0], item[1])
@@ -31,7 +28,6 @@ def copy_class_attrs(cls):
 
                 setattr(decor_class, 'get_' + attr, f)
 
-
         return decor_class
 
     return decorator
@@ -44,6 +40,7 @@ class computer:
     _gpu = 2000
     osu = '16 Gb'
     manufacturer = 'Asus'
+
     def __init__(self):
         pass
 
