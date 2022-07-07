@@ -50,6 +50,19 @@ class Matrix:
 
     def __repr__(self):
         return str(self.rows)
+
+    @property
+    def tr(self): #Транспонирование матрицы
+        if self.n != self.m:
+            raise ValueError('Matrix is not square.')
+        else:
+            tr = []
+            for row in enumerate(self.rows):
+                for i in range(len(row[1])):
+                    if i == row[0]:
+                        tr.append(row[1][i])
+            return sum(tr)
+
     def __error(self,other):
         if not isinstance(other, Matrix):
             raise TypeError("Не могу добавить обект {}".format(type(other)))
@@ -114,7 +127,7 @@ class Matrix:
         return copy
 class Mixed(Matrix):
     pass
-# a = Matrix()
+# z = Matrix(a)
 a = Matrix([[1,2,3,4],[5,6,7,8],[1,2,3,5],[3,7,4,5]]) #Матрица из списка
 b = Matrix(n = 4, m=4, default=2) # Создаем матрицу из числа строк столбцов и значению по умолчанию
 c = Matrix([1,5,7])
@@ -135,6 +148,8 @@ w = Matrix.load_file('task_06\matrix_bin.bin', 'r')
 print('Чтение файла в бинарном формате',w)
 print('----------------Копирование матрицы-----------------')
 print('Копирование матрицы',Mixed.copy(a))
+
+print("Транспонирование",a.tr)
 
 
 # print(b)
