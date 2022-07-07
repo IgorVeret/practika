@@ -52,7 +52,7 @@ class Matrix:
         return str(self.rows)
 
     @property
-    def tr(self): #Транспонирование матрицы
+    def tr(self): #Определитель матрицы
         if self.n != self.m:
             raise ValueError('Matrix is not square.')
         else:
@@ -149,7 +149,7 @@ print('Чтение файла в бинарном формате',w)
 print('----------------Копирование матрицы-----------------')
 print('Копирование матрицы',Mixed.copy(a))
 
-print("Транспонирование",a.tr)
+print("Определитель",a.tr)
 
 
 # print(b)
