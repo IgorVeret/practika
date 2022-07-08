@@ -5,4 +5,4 @@ import numpy as np
 
 def task_2(arr,n):
     return np.repeat(arr, n) #Функция repeat() повторяет элементы массива
-task_2(np.array([1,2,3]), 3)
+print(task_2(np.array([1,2,3]), 3))
