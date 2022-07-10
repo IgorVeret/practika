@@ -10,10 +10,8 @@ from sklearn.datasets import fetch_20newsgroups
 X_train = fetch_20newsgroups(subset='train')
 X_test = fetch_20newsgroups(subset='test')
 
-#label_id и label_name были перепутаны
 label_names = pd.DataFrame(columns=['label_id', 'label_name'],
                            data=[(i, e) for i, e in enumerate(list(X_train.target_names))])
-# label_names['label_id'].value_counts().plot()
 data = pd.DataFrame()
 data['text'] = X_train.data + X_test.data
 data['is_train'] = [True] * len(X_train.data) + [False] * len(X_test.data)
