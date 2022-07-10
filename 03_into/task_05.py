@@ -14,7 +14,6 @@ import re
 X_train = fetch_20newsgroups(subset='train')
 X_test = fetch_20newsgroups(subset='test')
 
-# label_id и label_name были перепутаны
 label_names = pd.DataFrame(columns=['label_id', 'label_name'],
                            data=[(i, e) for i, e in enumerate(list(X_train.target_names))])
 
