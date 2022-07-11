@@ -69,7 +69,7 @@ def task_6():
 
 def word_filt(wrd_list):
     vc=list(filter(lambda x: x in vocabulary.keys(), wrd_list))
-    print(vc)
+
     return list(filter(lambda x: x in vocabulary.keys(), wrd_list))
 
 
