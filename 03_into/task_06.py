@@ -32,12 +32,12 @@ jd = data.merge(label_names, on='label_id', how='left')
 
 jd.loc[jd['is_train'] == True]['label_name']
 
-ptrn = re.compile(r'[^a-zA-Z ]')
+reg = re.compile(r'[^a-zA-Z ]')
 
 
 def preprocess(text):
     text_prep = text.lower()
-    text_prep = re.sub(ptrn, ' ', text_prep)
+    text_prep = re.sub(reg, ' ', text_prep)
     return text_prep.split()
 
 
@@ -68,7 +68,6 @@ def task_6():
 
 
 def word_filt(wrd_list):
-    vc=list(filter(lambda x: x in vocabulary.keys(), wrd_list))
 
     return list(filter(lambda x: x in vocabulary.keys(), wrd_list))
 
