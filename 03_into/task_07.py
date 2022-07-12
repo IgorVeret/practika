@@ -81,7 +81,7 @@ def task_7():
     vectorizer = CountVectorizer(vocabulary=vocabulary.keys())
     cv_train = vectorizer.transform(train_df['text'])
     cv_test = vectorizer.transform(test_df['text'])
-    print(cv_test)
+
     return cv_train, cv_test
 
 X_train, X_test = task_7()
