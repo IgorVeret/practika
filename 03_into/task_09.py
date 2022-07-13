@@ -102,4 +102,4 @@ displ_1 = plot_confusion_matrix(model, X_test, y_test, display_labels=y_test.uni
                                ax = ax_1)
 plt.setp(ax_0.get_xticklabels(), ha="center", rotation=90)
 plt.setp(ax_1.get_xticklabels(), ha="center", rotation=90)
-plt.show()
+plt.show();
