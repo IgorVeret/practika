@@ -55,7 +55,7 @@ def word_filt(wrd_list):
 vocabulary = task_6()
 
 keys = vocabulary.keys()
-print(keys)
+
 
 def task_11():
     dict_my = defaultdict(int)
